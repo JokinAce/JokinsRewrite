@@ -1,0 +1,6 @@
+F:\C#\Jokin's Rewrite\Rewrite\bin\x86\Release\JokinsRewrite.dll
+F:\C#\Jokin's Rewrite\Rewrite\bin\x86\Release\JokinsRewrite.pdb
+F:\C#\Jokin's Rewrite\Rewrite\obj\x86\Release\Rewrite.csprojAssemblyReference.cache
+F:\C#\Jokin's Rewrite\Rewrite\obj\x86\Release\Rewrite.csproj.CoreCompileInputs.cache
+F:\C#\Jokin's Rewrite\Rewrite\obj\x86\Release\JokinsRewrite.dll
+F:\C#\Jokin's Rewrite\Rewrite\obj\x86\Release\JokinsRewrite.pdb
