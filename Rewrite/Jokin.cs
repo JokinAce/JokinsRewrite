@@ -7,14 +7,15 @@ using System.Threading.Tasks;
 public class Rewrite
 {
     public static VAMemory vam;
-    public Rewrite()
-    {
-
-    }
 
     public Rewrite(string processss)
     {
         vam = new VAMemory(processss);
+    }
+
+    public long BaseAddr()
+    {
+        return vam.getBaseAddress;
     }
 
     public bool CheckProcess()

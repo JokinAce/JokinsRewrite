@@ -65,7 +65,7 @@ public class VAMemory
 	{
 		if (this.processName == null)
 		{
-			MessageBox.Show("Programmer, define process name first!");
+			Console.WriteLine("Programmer, define process name first!");
 			return false;
 		}
 		this.mainProcess = Process.GetProcessesByName(this.processName);
@@ -1015,7 +1015,7 @@ public class VAMemory
 	// Token: 0x06000035 RID: 53 RVA: 0x00003270 File Offset: 0x00001470
 	private void ErrorProcessNotFound(string pProcessName)
 	{
-		MessageBox.Show(this.processName + " is not running or has not been found. Please check and try again", "Process Not Found", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+		Console.WriteLine(this.processName + " is not running or has not been found. Please check and try again");
 	}
 
 	// Token: 0x04000001 RID: 1
