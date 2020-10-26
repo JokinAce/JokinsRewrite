@@ -1,5 +1,5 @@
 # JokinsRewrite
-Modified version of VAMemory.
+Modified version of VAMemory (Wrapper Style).
 - Intended use is on CSGO
 
 # Credits
