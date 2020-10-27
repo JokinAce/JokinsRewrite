@@ -49,11 +49,6 @@ public class VAMemory
 		}
 	}
 
-	// Token: 0x0600000A RID: 10 RVA: 0x0000209E File Offset: 0x0000029E
-	public VAMemory()
-	{
-	}
-
 	// Token: 0x0600000B RID: 11 RVA: 0x000020A6 File Offset: 0x000002A6
 	public VAMemory(string pProcessName)
 	{
@@ -1015,7 +1010,16 @@ public class VAMemory
 	// Token: 0x06000035 RID: 53 RVA: 0x00003270 File Offset: 0x00001470
 	private void ErrorProcessNotFound(string pProcessName)
 	{
-		Console.WriteLine(this.processName + " is not running or has not been found. Please check and try again");
+		if (Application.MessageLoop)
+		{
+			// WinForms app
+			MessageBox.Show(this.processName + " is not running or has not been found. Please check and try again", "Process Not Found", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+		}
+		else
+		{
+			// Console app
+			Console.WriteLine(this.processName + " is not running or has not been found. Please check and try again");
+		}
 	}
 
 	// Token: 0x04000001 RID: 1
