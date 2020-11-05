@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Runtime.InteropServices;
+using System.Windows.Forms;
 
 public class Rewrite
 {
@@ -11,6 +9,28 @@ public class Rewrite
     public Rewrite(string processss)
     {
         vam = new VAMemory(processss);
+    }
+
+    [DllImport("user32.dll")]
+    static extern ushort GetAsyncKeyState(int vKey);
+
+    public bool IsKeyPushedDown(Keys vKey)
+    {
+        return 0 != (GetAsyncKeyState((int)vKey) & 0x8000);
+    }
+
+    public int MultiPointer(int BaseOffset, int[] Pointers)
+    {
+        int Current = ReadInt((int)(BaseAddr() + BaseOffset));
+
+        if (Pointers != null)
+        {
+            foreach (int Pointer in Pointers)
+            {
+                Current = ReadInt(Current + Pointer);
+            }
+        }
+        return Current;
     }
 
     public long BaseAddr()
