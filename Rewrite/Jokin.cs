@@ -19,18 +19,22 @@ public class Rewrite
         return 0 != (GetAsyncKeyState((int)vKey) & 0x8000);
     }
 
-    public int MultiPointer(int BaseOffset, int[] Pointers)
+    public int MultiPointer(long BaseAddr, int BaseOffset, int[] Pointers)
     {
-        int Current = ReadInt((int)(BaseAddr() + BaseOffset));
+        int Current = ReadInt((int)(BaseAddr + BaseOffset));
 
         if (Pointers != null)
         {
-            foreach (int Pointer in Pointers)
+            for (int i = 0; i < Pointers.Length - 1; i++)
             {
-                Current = ReadInt(Current + Pointer);
+                Current = ReadInt(Current + Pointers[i]);
             }
+            //foreach (int Pointer in Pointers)
+            //{
+            //    Current = ReadInt(Current + Pointer);
+            //}
         }
-        return Current;
+        return Current + Pointers[Pointers.Length - 1];
     }
 
     public long BaseAddr()
