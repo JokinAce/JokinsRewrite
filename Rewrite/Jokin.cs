@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Diagnostics;
+using System.Diagnostics.Eventing.Reader;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
@@ -29,12 +31,26 @@ public class Rewrite
             {
                 Current = ReadInt(Current + Pointers[i]);
             }
-            //foreach (int Pointer in Pointers)
-            //{
-            //    Current = ReadInt(Current + Pointer);
-            //}
         }
         return Current + Pointers[Pointers.Length - 1];
+    }
+
+    public long GetDLL(string name)
+    {
+        long DLL = 0;
+        if (CheckProcess())
+        {
+            Process[] p = Process.GetProcessesByName(vam.processName);
+            foreach (ProcessModule m in p[0].Modules)
+            {
+                if (m.ModuleName == name)
+                {
+                    DLL = (long)m.BaseAddress;
+                    return DLL;
+                }
+            }
+        }
+        return DLL;
     }
 
     public long BaseAddr()
