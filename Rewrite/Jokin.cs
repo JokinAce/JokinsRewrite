@@ -17,7 +17,6 @@ public class Rewrite {
         return 0 != (GetAsyncKeyState((int)vKey) & 0x8000);
     }
 
-    // Maybe redo
     public int MultiPointer(long BaseAddr, int BaseOffset, int[] Pointers) {
         int Current = ReadInt((int)(BaseAddr + BaseOffset));
 
