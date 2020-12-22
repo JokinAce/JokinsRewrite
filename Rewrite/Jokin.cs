@@ -27,6 +27,19 @@ public class Rewrite {
         return Current + Pointers[Pointers.Length - 1];
     }
 
+    public long MultiPointer64(long BaseAddr, int BaseOffset, int[] Pointers) {
+        if (CheckProcess()) {
+            long Current = ReadInt64(BaseAddr + BaseOffset);
+
+            for (int i = 0; i < Pointers.Length - 1; i++) {
+                Current = ReadInt64(Current + Pointers[i]);
+            }
+
+            return Current + Pointers[Pointers.Length - 1];
+        }
+        return 0;
+    }
+
     public long GetDLL(string name) {
         long DLL = 0;
         if (CheckProcess()) {
@@ -55,6 +68,14 @@ public class Rewrite {
 
     public int ReadInt(int offsets) {
         return vam.ReadInt32((IntPtr)offsets);
+    }
+
+    public void WriteInt64(long offsets, long value) {
+        vam.WriteInt64((IntPtr)offsets, value);
+    }
+
+    public long ReadInt64(long offsets) {
+        return vam.ReadInt64((IntPtr)offsets);
     }
 
     public void WriteStringASCII(int offsets, string value) {
